@@ -1,0 +1,9 @@
+{
+  "name": "offline-pdf-to-epub-converter",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node test/epub-builder.test.mjs && node test/conversion-options.test.mjs"
+  }
+}

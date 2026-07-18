@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Offline PDF to EPUB Converter</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="control-panel">
+        <header class="header">
+          <div>
+            <p class="eyebrow">Offline converter</p>
+            <h1>PDF to EPUB</h1>
+          </div>
+          <span class="badge">Local</span>
+        </header>
+
+        <form id="converterForm" class="form">
+          <label id="dropZone" class="drop-zone" for="pdfInput">
+            <input id="pdfInput" type="file" accept="application/pdf,.pdf" />
+            <span id="fileName" class="file-name">Choose a PDF</span>
+            <span class="file-meta">No upload required</span>
+          </label>
+
+          <div class="grid">
+            <label class="field">
+              <span>Title</span>
+              <input id="titleInput" type="text" autocomplete="off" placeholder="Use file name" />
+            </label>
+
+            <label class="field">
+              <span>Author</span>
+              <input id="authorInput" type="text" autocomplete="off" placeholder="Unknown" />
+            </label>
+          </div>
+
+          <label class="field">
+            <span>Language</span>
+            <input id="languageInput" type="text" autocomplete="off" value="en" maxlength="16" />
+          </label>
+
+          <label class="field">
+            <span>Pages</span>
+            <input id="pageRangeInput" type="text" autocomplete="off" placeholder="All or 1-20, 35" />
+          </label>
+
+          <fieldset class="segmented" aria-label="EPUB layout type">
+            <label>
+              <input type="radio" name="epubType" value="reflowable" checked />
+              <span>Reflowable</span>
+            </label>
+            <label>
+              <input type="radio" name="epubType" value="fixed" />
+              <span>Fixed layout</span>
+            </label>
+          </fieldset>
+
+          <section id="fixedOptions" class="fixed-options" hidden>
+            <label class="field">
+              <span>Page image scale</span>
+              <select id="scaleInput">
+                <option value="1" selected>1x compact</option>
+                <option value="1.5">1.5x balanced</option>
+                <option value="2">2x sharp</option>
+              </select>
+            </label>
+          </section>
+
+          <div class="actions">
+            <button id="convertButton" class="primary" type="submit">
+              <span>Convert EPUB</span>
+            </button>
+            <button id="openTabButton" class="secondary" type="button" hidden>
+              <span>Open in tab</span>
+            </button>
+          </div>
+
+          <progress id="progressBar" value="0" max="1" hidden></progress>
+          <p id="status" class="status" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <aside class="run-panel" aria-label="Conversion run">
+        <p class="eyebrow">Run monitor</p>
+        <h2 id="runState">Ready</h2>
+        <dl class="run-stats">
+          <div>
+            <dt>File</dt>
+            <dd id="runFile">None</dd>
+          </div>
+          <div>
+            <dt>Layout</dt>
+            <dd id="runLayout">Reflowable</dd>
+          </div>
+          <div>
+            <dt>Pages</dt>
+            <dd id="runPages">All</dd>
+          </div>
+        </dl>
+        <div class="run-progress">
+          <div id="progressFill" class="progress-fill"></div>
+        </div>
+        <p id="runStatus" class="run-status">Idle</p>
+      </aside>
+    </main>
+
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

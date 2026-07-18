@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Offline PDF to EPUB Converter",
+  "version": "1.1.1",
+  "description": "Convert local PDF files into reflowable or fixed-layout EPUB files without using the internet.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "PDF to EPUB"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+  },
+  "permissions": [
+    "downloads"
+  ],
+  "host_permissions": []
+}

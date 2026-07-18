@@ -1,0 +1,421 @@
+:root {
+  color-scheme: light;
+  --bg: #f7f8f4;
+  --ink: #17201c;
+  --muted: #657168;
+  --panel: #ffffff;
+  --line: #d8ded4;
+  --accent: #1f7a5a;
+  --accent-dark: #155740;
+  --accent-soft: #e2f4ec;
+  --warn: #9b4d10;
+  --error: #b3261e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-width: 560px;
+  background: var(--bg);
+  color: var(--ink);
+  font: 14px/1.45 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  width: 560px;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+.shell {
+  margin: 0;
+  max-width: 100%;
+  padding: 18px;
+  width: 560px;
+}
+
+.control-panel {
+  min-width: 0;
+}
+
+.header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+  margin: 0 0 2px;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.badge {
+  background: var(--accent-soft);
+  border: 1px solid #b8dfce;
+  border-radius: 999px;
+  color: var(--accent-dark);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 9px;
+}
+
+.form {
+  display: grid;
+  gap: 12px;
+}
+
+.drop-zone {
+  align-items: center;
+  background: var(--panel);
+  border: 1px dashed #aab6ad;
+  border-radius: 8px;
+  cursor: pointer;
+  display: grid;
+  gap: 3px;
+  min-height: 82px;
+  padding: 14px;
+}
+
+.drop-zone:hover,
+.drop-zone:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(31, 122, 90, 0.12);
+}
+
+.drop-zone input {
+  height: 1px;
+  opacity: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.file-name {
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.file-meta {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.field {
+  display: grid;
+  gap: 5px;
+}
+
+.field span {
+  color: #3c463f;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.field input,
+.field select {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  color: var(--ink);
+  min-height: 38px;
+  outline: none;
+  padding: 8px 10px;
+  width: 100%;
+}
+
+.field input:focus,
+.field select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(31, 122, 90, 0.12);
+}
+
+.segmented {
+  background: #eef2ec;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: grid;
+  gap: 4px;
+  grid-template-columns: 1fr 1fr;
+  margin: 0;
+  padding: 4px;
+}
+
+.segmented label {
+  cursor: pointer;
+  min-width: 0;
+}
+
+.segmented input {
+  height: 1px;
+  opacity: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.segmented span {
+  align-items: center;
+  border-radius: 6px;
+  color: #465149;
+  display: flex;
+  font-weight: 700;
+  justify-content: center;
+  min-height: 36px;
+  padding: 8px;
+  text-align: center;
+}
+
+.segmented input:checked + span {
+  background: var(--panel);
+  box-shadow: 0 1px 4px rgba(23, 32, 28, 0.12);
+  color: var(--accent-dark);
+}
+
+.fixed-options {
+  border-left: 3px solid var(--accent);
+  padding-left: 10px;
+}
+
+.actions {
+  display: grid;
+  gap: 8px;
+}
+
+.primary,
+.secondary {
+  align-items: center;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  font-weight: 800;
+  justify-content: center;
+  min-height: 42px;
+  padding: 10px 12px;
+  width: 100%;
+}
+
+.primary {
+  background: var(--accent);
+  color: white;
+}
+
+.primary:hover {
+  background: var(--accent-dark);
+}
+
+.secondary {
+  background: #e7ece6;
+  color: #27332c;
+}
+
+.secondary:hover {
+  background: #dbe4dc;
+}
+
+.primary:disabled,
+.secondary:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+progress {
+  accent-color: var(--accent);
+  height: 8px;
+  width: 100%;
+}
+
+.status {
+  color: var(--muted);
+  margin: 0;
+  min-height: 20px;
+}
+
+.status[data-tone="success"] {
+  color: var(--accent-dark);
+  font-weight: 700;
+}
+
+.status[data-tone="warn"] {
+  color: var(--warn);
+}
+
+.status[data-tone="error"] {
+  color: var(--error);
+  font-weight: 700;
+}
+
+.run-panel {
+  display: none;
+}
+
+.run-panel h2 {
+  font-size: 28px;
+  letter-spacing: 0;
+  line-height: 1.1;
+  margin: 0 0 18px;
+}
+
+.run-stats {
+  display: grid;
+  gap: 12px;
+  margin: 0 0 24px;
+}
+
+.run-stats div {
+  border-top: 1px solid var(--line);
+  min-width: 0;
+  padding-top: 12px;
+}
+
+.run-stats dt {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  margin: 0 0 3px;
+  text-transform: uppercase;
+}
+
+.run-stats dd {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.run-progress {
+  background: #dce2dd;
+  border-radius: 999px;
+  height: 10px;
+  margin: 0 0 14px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  background: var(--accent);
+  block-size: 100%;
+  inline-size: 0;
+  transition: inline-size 180ms ease;
+}
+
+.run-status {
+  color: var(--muted);
+  font-size: 16px;
+  margin: 0;
+}
+
+@media (max-width: 420px) {
+  .shell {
+    width: 560px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+html.tab-mode,
+html.tab-mode body {
+  min-width: 0;
+}
+
+html.tab-mode body {
+  width: auto;
+}
+
+html.tab-mode body {
+  background:
+    linear-gradient(180deg, #f7f8f4 0%, #eff4ef 100%);
+}
+
+html.tab-mode .shell {
+  display: grid;
+  gap: 28px;
+  grid-template-columns: minmax(340px, 460px) minmax(0, 1fr);
+  margin: 0 auto;
+  max-width: 1180px;
+  min-height: 100vh;
+  padding: 32px;
+  width: 100%;
+}
+
+html.tab-mode .control-panel {
+  align-self: start;
+}
+
+html.tab-mode .header {
+  margin-bottom: 18px;
+}
+
+html.tab-mode h1 {
+  font-size: 34px;
+}
+
+html.tab-mode .drop-zone {
+  min-height: 116px;
+}
+
+html.tab-mode .field input,
+html.tab-mode .field select {
+  min-height: 44px;
+}
+
+html.tab-mode .primary,
+html.tab-mode .secondary {
+  min-height: 48px;
+}
+
+html.tab-mode .run-panel {
+  align-self: start;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 18px 50px rgba(23, 32, 28, 0.08);
+  display: block;
+  min-height: 320px;
+  min-width: 0;
+  padding: 24px;
+  position: sticky;
+  top: 32px;
+}
+
+html.tab-mode .run-stats {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 860px) {
+  html.tab-mode .shell {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  html.tab-mode .run-panel {
+    position: static;
+  }
+}
